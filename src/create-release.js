@@ -2,7 +2,8 @@ const core = require('@actions/core');
 const { GitHub, context } = require('@actions/github');
 const fs = require('fs');
 
-async function run() {
+async function run() 
+{
   try {
     // Get authenticated GitHub client (Ocktokit): https://github.com/actions/toolkit/tree/master/packages/github#usage
     const github = new GitHub(process.env.GITHUB_TOKEN);
@@ -25,10 +26,13 @@ async function run() {
     const owner = core.getInput('owner', { required: false }) || currentOwner;
     const repo = core.getInput('repo', { required: false }) || currentRepo;
     let bodyFileContent = null;
-    if (bodyPath !== '' && !!bodyPath) {
+
+    if (bodyPath !== '' && !!bodyPath) 
+    {
       try {
         bodyFileContent = fs.readFileSync(bodyPath, { encoding: 'utf8' });
-      } catch (error) {
+      } 
+      catch (error) {
         core.setFailed(error.message);
       }
     }
@@ -56,7 +60,8 @@ async function run() {
     core.setOutput('id', releaseId);
     core.setOutput('html_url', htmlUrl);
     core.setOutput('upload_url', uploadUrl);
-  } catch (error) {
+  } 
+  catch (error) {
     core.setFailed(error.message);
   }
 }
