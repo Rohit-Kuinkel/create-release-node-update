@@ -7091,7 +7091,11 @@ exports.getInput = getInput;
  * @param     value    value to store
  */
 function setOutput(name, value) {
-    command_1.issueCommand('set-output', { name }, value);
+    const outputFile = process.env.GITHUB_OUTPUT;
+    if (outputFile) 
+    {
+      fs.appendFileSync(outputFile, `${name}=${value}\n`);
+    }
 }
 exports.setOutput = setOutput;
 //-----------------------------------------------------------------------
