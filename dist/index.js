@@ -7090,6 +7090,8 @@ exports.getInput = getInput;
  * @param     name     name of the output to set
  * @param     value    value to store
  */
+const fs = require('fs');
+const path = require('path');
 function setOutput(name, value) {
     const outputFile = process.env.GITHUB_OUTPUT;
     if (outputFile) 
