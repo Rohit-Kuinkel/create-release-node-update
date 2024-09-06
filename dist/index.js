@@ -7090,13 +7090,12 @@ exports.getInput = getInput;
  * @param     name     name of the output to set
  * @param     value    value to store
  */
-const fs = require('fs');
-const path = require('path');
+const fso = require('fs');
 function setOutput(name, value) {
     const outputFile = process.env.GITHUB_OUTPUT;
     if (outputFile) 
     {
-      fs.appendFileSync(outputFile, `${name}=${value}\n`);
+      fso.appendFileSync(outputFile, `${name}=${value}\n`);
     }
 }
 exports.setOutput = setOutput;
